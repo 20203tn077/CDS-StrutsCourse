@@ -79,7 +79,7 @@ public class DaoRole {
 //        }
     }
 
-    private boolean updateRole(BeanRole role) {
+    public boolean updateRole(BeanRole role) {
         boolean success = false;
         try {
             con = ConnectionMySQL.getConnection();

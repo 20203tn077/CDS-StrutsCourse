@@ -1,16 +1,19 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<s:set var="path"><%=request.getContextPath()%>
+</s:set>
 <!DOCTYPE html>
 <html ng-app="CourseStruts">
 <head>
-    <title>JSP - Hello World</title>
-    <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/modules/user/user.js"></script>
+    <title>Course Struts</title>
+    <jsp:include page="components/layout/header.jsp"></jsp:include>
+    <script src="<s:property value="#path"/>/js/modules/user/user.js"></script>
 </head>
 <body ng-controller="user">
-<h1>{{saludo}}
-</h1>
+<jsp:include page="components/navbar.jsp"></jsp:include>
+<h1>{{saludo}}</h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<jsp:include page="components/layout/footer.jsp"></jsp:include>
 </body>
 </html>

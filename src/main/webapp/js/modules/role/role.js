@@ -1,4 +1,4 @@
-app.controller('user', ($scope, $http, $window) => {
+app.controller('role', ($scope, $http, $window) => {
     $scope.saludo = "Hola, Rebecca"
     $scope.showRegister = () => {
         $('#modalRegister').modal('show')
@@ -72,14 +72,6 @@ app.controller('user', ($scope, $http, $window) => {
             $scope.getRoles()
             $('#modalDelete').modal('hide')
         })
-    }
-
-    $scope.selectRole = (role) => {
-        $scope.rolesSelected.push(role)
-    }
-
-    $scope.deleteRole = (role) => {
-        $scope.rolesSelected = $scope.rolesSelected.filter((roleasd) => roleasd.id !== role.id)
     }
 
 

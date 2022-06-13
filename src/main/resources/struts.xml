@@ -7,10 +7,27 @@
 
     <constant name="struts.devMode" value="true" />
 
-    <package name="basicstruts2" extends="struts-default">
+    <package name="basicstruts2" extends="struts-default, json-default">
         <action name="index">
             <result>/index.jsp</result>
         </action>
+        <action name="roles">
+            <result>/views/role.jsp</result>
+        </action>
+        <action name="findAllStatuses" class="com.utez.edu.mx.ejemplo1.status.ActionStatus" method="findAllStatuses">
+            <result type="json"/>
+        </action>
+        <action name="createRole" class="com.utez.edu.mx.ejemplo1.role.ActionRole" method="createRole">
+            <result type="json"/>
+        </action>
+        <action name="updateRole" class="com.utez.edu.mx.ejemplo1.role.ActionRole" method="updateRole">
+            <result type="json"/>
+        </action>
+        <action name="findAllRoles" class="com.utez.edu.mx.ejemplo1.role.ActionRole" method="findAllRoles">
+            <result type="json"/>
+        </action>
+        <action name="users" class="com.utez.edu.mx.ejemplo1.user.ActionUser" method="users">
+            <result name="success">/views/user.jsp</result>
+        </action>
     </package>
-
 </struts>
