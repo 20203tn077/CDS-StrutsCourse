@@ -37,6 +37,15 @@ public class BeanUser {
         this.roles = roles;
     }
 
+    public BeanUser(int id, String email, String createdAt, BeanStatus status, BeanPerson person) {
+        this.id = id;
+        this.email = email;
+        this.createdAt = createdAt;
+        this.status = status;
+        this.person = person;
+        this.roles = roles;
+    }
+
     public int getId() {
         return id;
     }

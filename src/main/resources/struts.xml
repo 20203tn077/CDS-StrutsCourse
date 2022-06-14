@@ -29,5 +29,14 @@
         <action name="users" class="com.utez.edu.mx.ejemplo1.user.ActionUser" method="users">
             <result name="success">/views/user.jsp</result>
         </action>
+        <action name="findAllUsers" class="com.utez.edu.mx.ejemplo1.user.ActionUser" method="findAllUsers">
+            <result type="json"/>
+        </action>
+        <action name="createUser" class="com.utez.edu.mx.ejemplo1.user.ActionUser" method="createUser">
+            <result type="json"/>
+        </action>
+        <action name="updateUser" class="com.utez.edu.mx.ejemplo1.user.ActionUser" method="updateUser">
+            <result type="json"/>
+        </action>
     </package>
 </struts>

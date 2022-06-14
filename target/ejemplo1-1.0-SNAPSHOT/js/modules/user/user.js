@@ -41,31 +41,35 @@ app.controller('user', ($scope, $http, $window) => {
             $scope.roles = roles
         })
     }
-    // $scope.getUsers = () => {
-    //     $http({
-    //         method: 'POST',
-    //         url: 'ejemplo1_war_exploded/findAllUsers'
-    //     }).then(({data: {users}}) => {
-    //         $scope.roles = users
-    //     })
-    // }
+    $scope.getUsers = () => {
+        $http({
+            method: 'POST',
+            url: 'ejemplo1_war_exploded/findAllUsers'
+        }).then(({data: {users, message}}) => {
+            console.log(users)
+            console.log(message)
+            $scope.users = users
+        })
+    }
     $scope.createUser = () => {
         $http({
             method: 'POST',
-            url: 'ejemplo1_war_exploded/createRole',
-            data: `data=${JSON.stringify($scope.roleActive)}`
-        }).then(() => {
-            $scope.getRoles()
+            url: 'ejemplo1_war_exploded/createUser',
+            data: `data=${JSON.stringify($scope.userActive)}`
+        }).then(({data: {message}}) => {
+            console.log(message)
+            $scope.getUsers()
             $('#modalRegister').modal('hide')
         })
     }
-    $scope.updateRole = () => {
+    $scope.updateUser = () => {
         $http({
             method: 'POST',
-            url: 'ejemplo1_war_exploded/updateRole',
-            data: `data=${JSON.stringify($scope.roleActive)}`
-        }).then(({data: {statuses}}) => {
-            $scope.getRoles()
+            url: 'ejemplo1_war_exploded/updateUser',
+            data: `data=${JSON.stringify($scope.userActive)}`
+        }).then(({data: {message}}) => {
+            console.log(message)
+            $scope.getUsers()
             $('#modalUpdate').modal('hide')
         })
     }
@@ -74,15 +78,16 @@ app.controller('user', ($scope, $http, $window) => {
         $scope.roleDelete.status = $scope.statuses[1]
         $http({
             method: 'POST',
-            url: 'ejemplo1_war_exploded/updateRole',
-            data: `data=${JSON.stringify($scope.roleDelete)}`
-        }).then(({data: {statuses}}) => {
-            $scope.getRoles()
+            url: 'ejemplo1_war_exploded/updateUser',
+            data: `data=${JSON.stringify($scope.userActive)}`
+        }).then(({data: {message}}) => {
+            console.log(message)
+            $scope.getUsers()
             $('#modalDelete').modal('hide')
         })
     }
 
     $scope.getStatuses()
     $scope.getRoles()
-    // $scope.getUsers()
+    $scope.getUsers()
 })

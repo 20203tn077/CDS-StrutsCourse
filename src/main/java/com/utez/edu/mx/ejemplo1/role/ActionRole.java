@@ -6,7 +6,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 
 public class ActionRole extends ActionSupport {
-    private BeanRole role;
     private List<BeanRole> roles;
     private String data;
 

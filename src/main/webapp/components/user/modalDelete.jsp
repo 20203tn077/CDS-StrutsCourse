@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>¿Deseas eliminar al usuario <span class="font-weight-bold" ng-bind="`${userActive.person.name} ${userActive.person.surname} ${userActive.person.lastname}`"></span>?</p>
+                <p>¿Deseas eliminar al usuario <span class="font-weight-bold" ng-bind="${userActive.person.name} ${userActive.person.surname} ${userActive.person.lastname}"></span>?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

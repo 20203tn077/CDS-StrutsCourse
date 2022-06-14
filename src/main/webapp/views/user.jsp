@@ -34,22 +34,24 @@
                                 <thead>
                                 <tr class="text-center">
                                     <th scope="col">#</th>
-                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Nombre completo</th>
+                                    <th scope="col">Correo</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="role in roles" class="text-center">
+                                <tr ng-repeat="user in users" class="text-center">
                                     <th class="align-middle" ng-bind="$index + 1"></th>
-                                    <td class="align-middle" ng-bind="role.name"></td>
+                                    <td class="align-middle" ng-bind="${user.person.name} ${user.person.surname} ${user.person.lastname}"></td>
+                                    <td class="align-middle" ng-bind="user.email"></td>
                                     <td class="align-middle">
-                                        <span class="badge text-white" ng-bind="role.status.name" ng-class="role.status.name === 'Activo' ? 'bg-success' : 'bg-secondary'"></span>
+                                        <span class="badge text-white" ng-bind="user.status.name" ng-class="user.status.name === 'Activo' ? 'bg-success' : 'bg-secondary'"></span>
                                     </td>
                                     <td class="align-middle">
-                                        <button class="btn btn-info" ng-click="showDetails(role.id)">Detalles</button>
-                                        <button class="btn btn-primary" ng-click="showUpdate(role.id)" ng-disabled="role.status.id === 2">Modificar</button>
-                                        <button class="btn btn-danger" ng-click="showDelete(role.id)" ng-disabled="role.status.id === 2">Eliminar</button>
+                                        <button class="btn btn-info" ng-click="showDetails(user.id)">Detalles</button>
+                                        <button class="btn btn-primary" ng-click="showUpdate(user.id)" ng-disabled="user.status.id === 2">Modificar</button>
+                                        <button class="btn btn-danger" ng-click="showDelete(user.id)" ng-disabled="user.status.id === 2">Eliminar</button>
                                     </td>
                                 </tr>
                                 </tbody>
