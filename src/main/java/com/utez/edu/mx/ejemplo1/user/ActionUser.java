@@ -21,12 +21,17 @@ public class ActionUser extends ActionSupport {
         return SUCCESS;
     }
     public String createUser() {
-        message = (new DaoUser().createUser(new Gson().fromJson(data, BeanUser.class))) ? "OK" : "ERROR";
+        System.out.println(data);
+        message = new DaoUser().createUser(new Gson().fromJson(data, BeanUser.class)) ? "OK" : "ERROR";
         return SUCCESS;
     }
     public String updateUser() {
-        message = (new DaoUser().update(new Gson().fromJson(data, BeanUser.class))) ? "OK" : "ERROR";
+        message = new DaoUser().update(new Gson().fromJson(data, BeanUser.class)) ? "OK" : "ERROR";
         return SUCCESS;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public List<BeanUser> getUsers() {

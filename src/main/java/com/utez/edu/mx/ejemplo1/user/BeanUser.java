@@ -101,4 +101,17 @@ public class BeanUser {
     public void setRoles(List<BeanRole> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "BeanUser{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", status=" + status +
+                ", person=" + person +
+                ", roles=" + roles +
+                '}';
+    }
 }

@@ -3,16 +3,26 @@ app.controller('user', ($scope, $http, $window) => {
     $scope.statuses = []
     $scope.roles = []
     $scope.users = []
-    $scope.userActive = {}
+    $scope.userActive = {
+        roles: []
+    }
     $scope.rolesSelectable = []
-    $scope.rolesSelected = []
 
     $scope.showRegister = () => {
-        $scope.userActive = {}
+        $scope.userActive = {
+            roles: []
+        }
+        $scope.rolesSelectable = angular.copy($scope.roles)
         $('#modalRegister').modal('show')
     }
     $scope.showUpdate = (id) => {
         $scope.userActive = angular.copy($scope.users.find((user) => user.id === id))
+        $scope.rolesSelectable = angular.copy($scope.roles).filter(role => ((role) => {
+            for(let i of $scope.userActive.roles) {
+                if (i.id == role.id) return false;
+            }
+            return true
+        }) (role))
         $('#modalUpdate').modal('show')
     }
     $scope.showDelete = (id) => {
@@ -20,7 +30,7 @@ app.controller('user', ($scope, $http, $window) => {
         $('#modalDelete').modal('show')
     }
     $scope.showDetails = (id) => {
-        $scope.userActive = $scope.user.find((user) => user.id === id)
+        $scope.userActive = $scope.users.find((user) => user.id === id)
         $('#modalDetails').modal('show')
     }
 
@@ -48,10 +58,13 @@ app.controller('user', ($scope, $http, $window) => {
         }).then(({data: {users, message}}) => {
             console.log(users)
             console.log(message)
+            users.forEach(user => user.person.birthdate = new Date(user.person.birthdate))
+            console.log(users)
             $scope.users = users
         })
     }
     $scope.createUser = () => {
+        console.log($scope.userActive)
         $http({
             method: 'POST',
             url: 'ejemplo1_war_exploded/createUser',
@@ -63,6 +76,7 @@ app.controller('user', ($scope, $http, $window) => {
         })
     }
     $scope.updateUser = () => {
+        console.log($scope.userActive)
         $http({
             method: 'POST',
             url: 'ejemplo1_war_exploded/updateUser',
@@ -85,6 +99,15 @@ app.controller('user', ($scope, $http, $window) => {
             $scope.getUsers()
             $('#modalDelete').modal('hide')
         })
+    }
+
+    $scope.selectRole = (id) => {
+        $scope.rolesSelectable = $scope.rolesSelectable.filter(role => role.id !== id)
+        $scope.userActive.roles.push($scope.roles.find(role => role.id === id))
+    }
+    $scope.removeRole = (id) => {
+        $scope.userActive.roles = $scope.userActive.roles.filter(role => role.id !== id)
+        $scope.rolesSelectable.push($scope.roles.find(role => role.id === id))
     }
 
     $scope.getStatuses()

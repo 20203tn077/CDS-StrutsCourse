@@ -43,7 +43,7 @@
                                 <tbody>
                                 <tr ng-repeat="user in users" class="text-center">
                                     <th class="align-middle" ng-bind="$index + 1"></th>
-                                    <td class="align-middle" ng-bind="${user.person.name} ${user.person.surname} ${user.person.lastname}"></td>
+                                    <td class="align-middle" ng-bind-template="{{user.person.name}} {{user.person.surname}} {{user.person.lastname}}"></td>
                                     <td class="align-middle" ng-bind="user.email"></td>
                                     <td class="align-middle">
                                         <span class="badge text-white" ng-bind="user.status.name" ng-class="user.status.name === 'Activo' ? 'bg-success' : 'bg-secondary'"></span>

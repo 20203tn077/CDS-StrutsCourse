@@ -78,4 +78,16 @@ public class BeanPerson {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "BeanPerson{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", birthdate='" + birthdate + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }
